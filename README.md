@@ -1,6 +1,6 @@
 ﻿# Bulgarian Electricity Distributors API / HomeAssistant Integration
 
-A script that parses the website of Bulgarian electricity provider Chez, now renamed to Electrohold(.bg).
+A script that parses the website of Bulgarian electricity providers. Currently supporting only Chez, now renamed to Electrohold(.bg).
 
 Fetches current electricity prices and outages for specified client id.
 
@@ -18,4 +18,6 @@ Fetches current electricity prices and outages for specified client id.
 
 ### 1. Copy contents of configuration.yaml to the configuration.yaml file of your HA install
 
-### 2. Restart HomeAssistant
+### 2. Change your client id.
+
+### 3. Restart HomeAssistant
