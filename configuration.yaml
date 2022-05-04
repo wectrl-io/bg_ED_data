@@ -19,7 +19,7 @@ sensor:
     value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
     index: 7
     unit_of_measurement: "BGN/kWh"
-    can_interval: 21600  # every 6 hours
+    scan_interval: 21600  # every 6 hours
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   - platform: scrape
     resource: https://electrohold.bg/bg/sales/domakinstva/snabdyavane-po-regulirani-ceni/
