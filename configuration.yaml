@@ -1,4 +1,6 @@
-# some stuff in configuration.yaml...
+  ##
+  ## ------------## CEZ Price scraper and checck for outages    ## -------------------------------------------------------------
+  # https://github.com/maslyankov/bg_electricity_distributors_api.git
 
 sensor:
   # Chez / electrohold.bg - Start
@@ -8,29 +10,53 @@ sensor:
     select: 'span[style="color:#333333"]'
     value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
     index: 5
-    unit_of_measurement: "lv/kWh"
-    scan_interval: 21600  # every 6 hours
+    unit_of_measurement: "BGN/kWh"
+    can_interval: 21600  # every 6 hours
   - platform: scrape
     resource: https://ermzapad.bg/bg/za-klienta/ceni-i-nachini-na-plashane/ceni-za-dostp-i-prenos/
     name: Electricity price (transmission cost for mid voltage dist net)
     select: 'span[style="color:#333333"]'
     value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
     index: 7
-    unit_of_measurement: "lv/kWh"
+    unit_of_measurement: "BGN/kWh"
+    can_interval: 21600  # every 6 hours
+  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+  - platform: scrape
+    resource: https://electrohold.bg/bg/sales/domakinstva/snabdyavane-po-regulirani-ceni/
+    name: "CEZ Night tariff"
+    select: 'td[class="xl65"]'
+    value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
+    index: 3
+    unit_of_measurement: "BGN/kWh"
     scan_interval: 21600  # every 6 hours
+  - platform: scrape
+    resource: https://electrohold.bg/bg/sales/domakinstva/snabdyavane-po-regulirani-ceni/
+    name: "CEZ Day tariff"
+    select: 'td[class="xl65"]'
+    value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
+    index: 1
+    unit_of_measurement: "BGN/kWh"
+    can_interval: 21600  # every 6 hours
+  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+  #
   - platform: template
     sensors:
-      electricity_price:
-        unit_of_measurement: "lv/kWh"
-        value_template: "{{ states('sensor.electricity_price_access_cost') | float + states('sensor.electricity_price_transmission_cost_for_mid_voltage_dist_net') | float }}"
+      cez_total_price_day:
+        unit_of_measurement: "BGN/kWh"
+        value_template: "{{ states('sensor.cez_day_tariff') | float + states('sensor.electricity_price_access_cost') | float + states('sensor.electricity_price_transmission_cost_for_mid_voltage_dist_net') | float | round(5) }}"
+  - platform: template
+    sensors:
+      cez_total_price_night:
+        unit_of_measurement: "BGN/kWh"
+        value_template: "{{ states('sensor.cez_night_tariff') | float + states('sensor.electricity_price_access_cost') | float + states('sensor.electricity_price_transmission_cost_for_mid_voltage_dist_net') | float | round(5) }}"
 
   - platform: rest
     name: "Electricity - Current Outage"
     resource: https://info.electrohold.bg/webint/vok/avplan.php
     method: POST
-    payload: "action=viewitn&itn=123456789101"  # Change client id
+    payload: "action=viewitn&itn=1234567890" # Change client id
     value_template: '{{ value.encode().decode("utf-8-sig").split("При липса")[0] }}'
-    scan_interval: 1800  # every 1/2 hour
+    scan_interval: 1800 # every 1/2 hour
     headers:
       Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
 
@@ -38,11 +64,9 @@ sensor:
     name: "Electricity - Planned Outages"
     resource: https://info.electrohold.bg/webint/vok/avplan.php
     method: POST
-    payload: "action=viewitn_plan&itn=123456789101"  # Change client id
+    payload: "action=viewitn_plan&itn=1234567890" # Change client id
     value_template: '{{ value.encode().decode("utf-8-sig") }}'
-    scan_interval: 1800  # every 1/2 hour
+    scan_interval: 1800 # every 1/2 hour
     headers:
       Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
   # Chez / electrohold.bg - end
-
-# some other stuff in configuration.yaml...
