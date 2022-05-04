@@ -1,6 +1,7 @@
 # some stuff in configuration.yaml...
 
 sensor:
+  # Chez / electrohold.bg - Start
   - platform: scrape
     resource: https://ermzapad.bg/bg/za-klienta/ceni-i-nachini-na-plashane/ceni-za-dostp-i-prenos/
     name: Electricity price (access cost)
@@ -42,6 +43,6 @@ sensor:
     scan_interval: 1800  # every 1/2 hour
     headers:
       Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
-
+  # Chez / electrohold.bg - end
 
 # some other stuff in configuration.yaml...
