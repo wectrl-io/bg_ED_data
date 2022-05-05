@@ -36,7 +36,7 @@ sensor:
     value_template: '{{( value | replace (",", ".") | float * 1.2 )| round(5) }}'
     index: 1
     unit_of_measurement: "BGN/kWh"
-    can_interval: 21600  # every 6 hours
+    scan_interval: 21600  # every 6 hours
     # Add tax to el tariffs and sum them
  
   - platform: template
