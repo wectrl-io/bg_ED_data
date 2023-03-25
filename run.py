@@ -1,5 +1,8 @@
-import electrohold.prices as el_prices
-import electrohold.outages as el_outages
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
+import providers.electrohold.prices as el_prices
+import providers.electrohold.outages as el_outages
 
 
 def main():
