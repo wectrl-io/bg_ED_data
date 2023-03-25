@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
 from webbrowser import get
 from utils.html_parser import HTMLTableParser
 import requests
