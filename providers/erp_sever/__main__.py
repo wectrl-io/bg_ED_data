@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-# from providers.electrohold.electrohold import Electrohold as Provider
-from providers.erp_sever.erp_sever import ERPSever as Provider
+import sys
+
+from erp_sever.erp_sever import ERPSever as Provider
 
 #region File Attributes
 
@@ -35,7 +36,7 @@ __class_name__ = ""
 
 def main():
 
-    print("Starting work...")
+    print('cmd entry:', sys.argv)
 
     provider = Provider()
     ids = ['300066244165', '123456789101']
@@ -46,8 +47,6 @@ def main():
 
     print("Electricity prices data:")
     print(provider.get_prices())
-
-    print("Finitto!")
 
 if __name__ == "__main__":
     main()
