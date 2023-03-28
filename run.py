@@ -27,7 +27,7 @@ __maintainer__ = ["Orlin Dimitrov", "Martin Maslyankov", "Nikola Atanasov"]
 __email__ = ""
 """E-mail of the author."""
 
-__class_name__ = "BaseProvider"
+__class_name__ = ""
 """Provider class name."""
 
 #endregion
