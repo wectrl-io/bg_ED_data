@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from providers.electrohold.electrohold import Electrohold as Provider
-
 #region File Attributes
 
 __author__ = "Orlin Dimitrov"
@@ -32,21 +30,13 @@ __class_name__ = "BaseProvider"
 
 #endregion
 
-def main():
+class BaseProvider:
 
-    print("Starting work...")
+    def __init__(self):
+        pass
 
-    provider = Provider()
-    ids = ['300066244165', '123456789101']
+    def get_outages(self, **kwargs):
+        pass
 
-    for identifier in ids:
-        print("Electricity outages data:")
-        print(provider.get_outages(identifier))
-
-    print("Electricity prices data:")
-    print(provider.get_prices())
-
-    print("Finitto!")
-
-if __name__ == "__main__":
-    main()
+    def get_prices(self, **kwargs):
+        pass
