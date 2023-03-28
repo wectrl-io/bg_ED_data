@@ -14,10 +14,12 @@ Fetches current electricity prices and outages for specified client id.
 
 ### 4. python3 run.py
 
-## How to use in HomeAssistant:
+## CICD:
 
-### 1. Copy contents of configuration.yaml to the configuration.yaml file of your HA install
+### Using GitLab Workflow with feature branch approach
 
-### 2. Change your client id.
+### Create branch based on develop, named based on developed feature, push, create Pull Request
 
-### 3. Restart HomeAssistant
+### On PR for verification, the source code is ran with different versions of Python (3.8, 3.9, 3.10) and linted with flake8.
+
+### Develop -> Main branch merges are done when the develop branch is stable and after a version/state tag on the develop branch state.
