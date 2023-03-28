@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from providers.electrohold.electrohold import Electrohold as Provider
+# from providers.electrohold.electrohold import Electrohold as Provider
+from providers.erp_sever.erp_sever import ERPSever as Provider
 
 #region File Attributes
 
@@ -41,7 +42,7 @@ def main():
 
     for identifier in ids:
         print("Electricity outages data:")
-        print(provider.get_outages(identifier))
+        print(provider.get_outages(identifier=identifier))
 
     print("Electricity prices data:")
     print(provider.get_prices())
