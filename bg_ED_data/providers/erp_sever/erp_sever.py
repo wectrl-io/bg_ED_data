@@ -48,4 +48,5 @@ class ERPSever(BaseProvider):
     def get_prices(self, **kwargs):
         url = "https://erpsever.bg/bg/ceni/ceni-za-prenos-i-dostyp"
         response = requests.get(url)
+        print(response.text)
         pass
