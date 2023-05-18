@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-# from providers.electrohold.electrohold import Electrohold as Provider
-from providers.erp_sever.erp_sever import ERPSever as Provider
+import argparse
+
+from providers.factory import Factory
 
 #region File Attributes
 
@@ -35,9 +36,18 @@ __class_name__ = "BaseProvider"
 
 def main():
 
+    # Create parser.
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--provider", type=str, default="erp_sever", help="ERP Sever")
+
+    # Take arguments.
+    args = parser.parse_args()
+
+    provider = Factory.create(args.provider)
+
     print("Starting work...")
 
-    provider = Provider()
     ids = ['300066244165', '123456789101']
 
     for identifier in ids:
