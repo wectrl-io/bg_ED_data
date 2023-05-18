@@ -3,7 +3,7 @@
 
 import argparse
 
-from providers.factory import Factory
+from bg_ED_data.providers.factory import Factory
 
 #region File Attributes
 
@@ -35,6 +35,8 @@ __class_name__ = ""
 #endregion
 
 def main():
+    """Main function.
+    """
 
     # Create parser.
     parser = argparse.ArgumentParser()
