@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 # -*- coding: utf8 -*-
 
 #region File Attributes
@@ -29,3 +30,6 @@ __class_name__ = ""
 """Provider class name."""
 
 #endregion
+=======
+# -*- coding: utf8 -*-
+>>>>>>> c74953c12589b0b65d342d681e8c0850f9341ed9
