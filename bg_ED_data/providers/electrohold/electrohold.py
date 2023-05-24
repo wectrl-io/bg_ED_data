@@ -3,12 +3,14 @@
 
 import json
 
-from providers.base.base_provider import BaseProvider
-from utils.html_parser import HTMLTableParser
+from bg_ED_data.providers.base.base_provider import BaseProvider
+from bg_ED_data.utils.html_parser import HTMLTableParser
+
+import requests
+import urllib3
 
 # Suppress ssl warnings
-import requests
-requests.urllib3.disable_warnings(requests.urllib3.exceptions.InsecureRequestWarning)
+# urllib3.disable_warnings(requests.exceptions.SSLError)
 
 from webbrowser import get
 

@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from providers.electrohold.electrohold import Electrohold
-from providers.erp_sever.erp_sever import ERPSever
-
+from bg_ED_data.providers.electrohold.electrohold import Electrohold
+from bg_ED_data.providers.erp_sever.erp_sever import ERPSever
 
 #region File Attributes
 
