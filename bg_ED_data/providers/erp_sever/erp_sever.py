@@ -61,11 +61,11 @@ class ERPSever(BaseProvider):
 
         params = {
             'method': 'get_interruptions',
-            'region_id': '2',
-            'type': 'for_next_48_hours',
+            'region_id': '2', # TODO: To be an argument of the method. Create enum for all IDs.
+            'type': 'for_next_48_hours', # TODO: To be an argument of the method.
             'offset': '0',
-            'archive_from_date': '',
-            'archive_to_date': '',
+            'archive_from_date': '', # TODO: To be an argument of the method.
+            'archive_to_date': '', # TODO: To be an argument of the method.
         }
 
         response = requests.get('https://www.erpsever.bg/bg/profil/xhr/', params=params, cookies=cookies, headers=headers)
